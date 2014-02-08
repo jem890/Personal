@@ -3,6 +3,83 @@
 	Changes to this CSS file might be lost when it is regenerated.
 */
 
+#{id}checkbox9 {
+	 z-index: 16;
+	 width: 16px;
+	 height: 16px;
+	 top: 46px;
+	 left: 525px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}checkbox8 {
+	 z-index: 15;
+	 width: 16px;
+	 height: 16px;
+	 top: 17px;
+	 left: 525px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}checkbox7 {
+	 z-index: 14;
+	 width: 16px;
+	 height: 16px;
+	 top: 18px;
+	 left: 241px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}checkbox6 {
+	 z-index: 13;
+	 width: 16px;
+	 height: 16px;
+	 top: 59px;
+	 left: 106px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}checkbox5 {
+	 z-index: 12;
+	 width: 16px;
+	 height: 16px;
+	 top: 95px;
+	 left: 152px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}combobox12 {
+	 z-index: 11;
+	 width: 188px;
+	 height: 24px;
+	 top: 14px;
+	 left: 321px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}label31 {
+	 z-index: 11;
+	 width: 52px;
+	 height: 13px;
+	 top: 19.5px;
+	 left: 264px;
+	
+	 position: absolute;
+	 
+}
+
 #{id}button8 {
 	 z-index: 18;
 	 width: 100px;
@@ -84,7 +161,7 @@
 	 z-index: 13;
 	 width: 60px;
 	 height: 13px;
-	 top: 325px;
+	 top: 325.5px;
 	 left: 37px;
 	
 	 position: absolute;
@@ -128,7 +205,7 @@
 	 z-index: 11;
 	 width: 66px;
 	 height: 13px;
-	 top: 213px;
+	 top: 213.5px;
 	 left: 31px;
 	
 	 position: absolute;
@@ -150,7 +227,7 @@
 	 z-index: 10;
 	 width: 52px;
 	 height: 13px;
-	 top: 143px;
+	 top: 143.5px;
 	 left: 45px;
 	
 	 position: absolute;
@@ -309,7 +386,7 @@
 	 z-index: 10;
 	 width: 100px;
 	 height: 27px;
-	 top: 117px;
+	 top: 124px;
 	 left: 11px;
 	
 	 position: absolute;
@@ -318,10 +395,10 @@
 
 #{id}textField9 {
 	 z-index: 9;
-	 width: 130px;
+	 width: 100px;
 	 height: 22px;
-	 top: 41px;
-	 left: 582px;
+	 top: 43px;
+	 left: 605px;
 	
 	 position: absolute;
 	 
@@ -331,8 +408,8 @@
 	 z-index: 9;
 	 width: 48px;
 	 height: 13px;
-	 top: 45.5px;
-	 left: 529px;
+	 top: 47.5px;
+	 left: 552px;
 	
 	 position: absolute;
 	 
@@ -340,10 +417,10 @@
 
 #{id}textField8 {
 	 z-index: 8;
-	 width: 130px;
+	 width: 100px;
 	 height: 22px;
-	 top: 15px;
-	 left: 582px;
+	 top: 14px;
+	 left: 605px;
 	
 	 position: absolute;
 	 
@@ -353,30 +430,8 @@
 	 z-index: 8;
 	 width: 53px;
 	 height: 13px;
-	 top: 19.5px;
-	 left: 524px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}checkbox4 {
-	 z-index: 7;
-	 width: 16px;
-	 height: 16px;
-	 top: 123px;
-	 left: 530px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}label15 {
-	 z-index: 7;
-	 width: 45px;
-	 height: 13px;
-	 top: 124.5px;
-	 left: 551px;
+	 top: 18.5px;
+	 left: 547px;
 	
 	 position: absolute;
 	 
@@ -386,8 +441,8 @@
 	 z-index: 6;
 	 width: 164px;
 	 height: 24px;
-	 top: 14px;
-	 left: 317px;
+	 top: 127px;
+	 left: 345px;
 	
 	 position: absolute;
 	 
@@ -397,52 +452,8 @@
 	 z-index: 6;
 	 width: 34px;
 	 height: 13px;
-	 top: 19.5px;
-	 left: 278px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}checkbox3 {
-	 z-index: 5;
-	 width: 16px;
-	 height: 16px;
-	 top: 75px;
-	 left: 530px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}label13 {
-	 z-index: 5;
-	 width: 128px;
-	 height: 13px;
-	 top: 76.5px;
-	 left: 551px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}checkbox2 {
-	 z-index: 4;
-	 width: 16px;
-	 height: 16px;
-	 top: 99px;
-	 left: 530px;
-	
-	 position: absolute;
-	 
-}
-
-#{id}label12 {
-	 z-index: 4;
-	 width: 83px;
-	 height: 13px;
-	 top: 100.5px;
-	 left: 551px;
+	 top: 132.5px;
+	 left: 306px;
 	
 	 position: absolute;
 	 
@@ -452,8 +463,8 @@
 	 z-index: 3;
 	 width: 286px;
 	 height: 24px;
-	 top: 97px;
-	 left: 193px;
+	 top: 93px;
+	 left: 223px;
 	
 	 position: absolute;
 	 
@@ -463,8 +474,8 @@
 	 z-index: 3;
 	 width: 44px;
 	 height: 13px;
-	 top: 102.5px;
-	 left: 144px;
+	 top: 98.5px;
+	 left: 174px;
 	
 	 position: absolute;
 	 
@@ -474,8 +485,8 @@
 	 z-index: 2;
 	 width: 287px;
 	 height: 24px;
-	 top: 64px;
-	 left: 193px;
+	 top: 55px;
+	 left: 222px;
 	
 	 position: absolute;
 	 
@@ -485,8 +496,8 @@
 	 z-index: 2;
 	 width: 89px;
 	 height: 13px;
-	 top: 69.5px;
-	 left: 99px;
+	 top: 60.5px;
+	 left: 128px;
 	
 	 position: absolute;
 	 
@@ -494,10 +505,10 @@
 
 #{id}combobox1 {
 	 z-index: 1;
-	 width: 190px;
+	 width: 181px;
 	 height: 24px;
 	 top: 14px;
-	 left: 66px;
+	 left: 49px;
 	
 	 position: absolute;
 	 
@@ -508,7 +519,7 @@
 	 width: 38px;
 	 height: 13px;
 	 top: 19.5px;
-	 left: 23px;
+	 left: 6px;
 	
 	 position: absolute;
 	 
@@ -573,7 +584,7 @@
 	 z-index: 9;
 	 width: 100px;
 	 height: 27px;
-	 top: 13px;
+	 top: 17px;
 	 left: 631px;
 	
 	 position: absolute;
@@ -582,10 +593,10 @@
 
 #{id}textField6 {
 	 z-index: 8;
-	 width: 130px;
+	 width: 172px;
 	 height: 22px;
 	 top: 108px;
-	 left: 429px;
+	 left: 420px;
 	
 	 position: absolute;
 	 
@@ -596,7 +607,7 @@
 	 width: 75px;
 	 height: 13px;
 	 top: 112.5px;
-	 left: 349px;
+	 left: 340px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -606,11 +617,12 @@
 #{id}textField5 {
 	 z-index: 7;
 	 width: 500px;
-	 height: 96px;
-	 top: 156px;
+	 height: 69px;
+	 top: 183px;
 	 left: 92px;
 	
 	 position: absolute;
+	 font-size: 13px;
 	 
 }
 
@@ -618,7 +630,7 @@
 	 z-index: 7;
 	 width: 75px;
 	 height: 13px;
-	 top: 197.5px;
+	 top: 211px;
 	 left: 12px;
 	
 	 position: absolute;
@@ -654,7 +666,7 @@
 	 width: 130px;
 	 height: 22px;
 	 top: 61px;
-	 left: 427px;
+	 left: 462px;
 	
 	 position: absolute;
 	 
@@ -665,7 +677,7 @@
 	 width: 75px;
 	 height: 13px;
 	 top: 65.5px;
-	 left: 347px;
+	 left: 382px;
 	
 	 position: absolute;
 	 min-width: 75px;
@@ -698,11 +710,12 @@
 #{id}textField1 {
 	 z-index: 2;
 	 width: 500px;
-	 height: 22px;
-	 top: 20px;
+	 height: 29px;
+	 top: 17px;
 	 left: 92px;
 	
 	 position: absolute;
+	 font-size: 13px;
 	 
 }
 
@@ -710,7 +723,7 @@
 	 z-index: 2;
 	 width: 75px;
 	 height: 13px;
-	 top: 24.5px;
+	 top: 25px;
 	 left: 12px;
 	
 	 position: absolute;
@@ -718,21 +731,10 @@
 	 
 }
 
-#{id}dataGrid1 {
-	 z-index: 2;
-	 width: 743px;
-	 height: 234px;
-	 top: 181px;
-	 left: 15px;
-	
-	 position: absolute;
-	 
-}
-
 #{id}filterContainer {
 	 z-index: 1;
 	 width: 743px;
-	 height: 153px;
+	 height: 165px;
 	 top: 15px;
 	 left: 15px;
 	
@@ -756,6 +758,17 @@
 	 width: 600px;
 	 height: 493px;
 	 top: 15px;
+	 left: 15px;
+	
+	 position: absolute;
+	 
+}
+
+#{id}flowsGrid {
+	 z-index: 2;
+	 width: 743px;
+	 height: 218px;
+	 top: 197px;
 	 left: 15px;
 	
 	 position: absolute;

@@ -72,8 +72,8 @@
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 272,
-			"workspaceTop": 0
+			"workspaceLeft": 0,
+			"workspaceTop": 210
 		}
 	},
 	"dataClasses": [
@@ -123,21 +123,21 @@
 				},
 				{
 					"name": "description",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "accountingClass",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "mergeCode",
+					"kind": "storage",
 					"scope": "public",
-					"type": "long",
-					"kind": "storage"
+					"type": "long"
 				}
 			]
 		},
@@ -199,6 +199,12 @@
 					"type": "BudgetCollection",
 					"reversePath": true,
 					"path": "analyticAccount"
+				},
+				{
+					"name": "typology",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
 				}
 			]
 		},
@@ -450,6 +456,19 @@
 					"type": "AnalyticAccountCollection",
 					"reversePath": true,
 					"path": "project"
+				},
+				{
+					"name": "name",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "parentName",
+					"scope": "public",
+					"path": "parent.name",
+					"type": "string",
+					"kind": "alias"
 				}
 			]
 		}
