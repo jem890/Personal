@@ -1,2 +1,458 @@
-{    "toJSON": true,    "dbInfo": [{        "name": "Model",        "uuid": ""    }],    "extraProperties": {        "version": "1",        "classes": {        },        "model": {            "scriptMode": "manual"
-        }    },    "dataClasses": []}
+﻿{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Project": {
+				"panelColor": "#7F7F7F",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 33,
+						"Y": 363
+					}
+				}
+			},
+			"Flow": {
+				"panelColor": "#D7E3BC",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 1042,
+						"Y": 105
+					}
+				}
+			},
+			"AnalyticAccount": {
+				"panelColor": "#D7E3BC",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 486,
+						"Y": 558
+					}
+				}
+			},
+			"Account": {
+				"panelColor": "#7F7F7F",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 635,
+						"Y": 83
+					}
+				}
+			},
+			"Budget": {
+				"panelColor": "#eee",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 1115,
+						"Y": 848
+					}
+				}
+			},
+			"Counterpart": {
+				"panelColor": "#BFBFBF",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 1547,
+						"Y": 127
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 272,
+			"workspaceTop": 0
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Account",
+			"className": "Account",
+			"collectionName": "AccountCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "project",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Project",
+					"path": "Project"
+				},
+				{
+					"name": "flowCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "FlowCollection",
+					"reversePath": true,
+					"path": "fromAccount"
+				},
+				{
+					"name": "flowCollection_1",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "FlowCollection",
+					"reversePath": true,
+					"path": "toAccount"
+				},
+				{
+					"name": "description",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "accountingClass",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "mergeCode",
+					"scope": "public",
+					"type": "long",
+					"kind": "storage"
+				}
+			]
+		},
+		{
+			"name": "AnalyticAccount",
+			"className": "AnalyticAccount",
+			"collectionName": "AnalyticAccountCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "parent",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "AnalyticAccount",
+					"path": "AnalyticAccount"
+				},
+				{
+					"name": "analyticAccountCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "AnalyticAccountCollection",
+					"reversePath": true,
+					"path": "parent"
+				},
+				{
+					"name": "project",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Project",
+					"path": "Project"
+				},
+				{
+					"name": "flowCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "FlowCollection",
+					"reversePath": true,
+					"path": "analyticAccount"
+				},
+				{
+					"name": "budgetCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "BudgetCollection",
+					"reversePath": true,
+					"path": "analyticAccount"
+				}
+			]
+		},
+		{
+			"name": "Budget",
+			"className": "Budget",
+			"collectionName": "BudgetCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "title",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "valueDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "description",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "analyticAccount",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "AnalyticAccount",
+					"path": "AnalyticAccount"
+				}
+			]
+		},
+		{
+			"name": "Counterpart",
+			"className": "Counterpart",
+			"collectionName": "CounterpartCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "phone",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "address",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "flowCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "FlowCollection",
+					"reversePath": true,
+					"path": "counterpart"
+				}
+			]
+		},
+		{
+			"name": "Flow",
+			"className": "Flow",
+			"collectionName": "FlowCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "analyticAccount",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "AnalyticAccount",
+					"path": "AnalyticAccount"
+				},
+				{
+					"name": "title",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "valueDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "description",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "fromAccount",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Account",
+					"path": "Account"
+				},
+				{
+					"name": "fromAccountName",
+					"kind": "alias",
+					"scope": "public",
+					"type": "string",
+					"path": "fromAccount.name"
+				},
+				{
+					"name": "toAccount",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Account",
+					"path": "Account"
+				},
+				{
+					"name": "toAccountName",
+					"kind": "alias",
+					"scope": "public",
+					"type": "string",
+					"path": "toAccount.name"
+				},
+				{
+					"name": "amount",
+					"kind": "storage",
+					"scope": "public",
+					"type": "number"
+				},
+				{
+					"name": "approved",
+					"kind": "storage",
+					"scope": "public",
+					"type": "bool"
+				},
+				{
+					"name": "approvalDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "insertionDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "typology",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "counterpart",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Counterpart",
+					"path": "Counterpart"
+				},
+				{
+					"name": "counterpartName",
+					"kind": "alias",
+					"scope": "public",
+					"type": "string",
+					"path": "counterpart.name"
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"className": "Project",
+			"collectionName": "ProjectCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "accountCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "AccountCollection",
+					"reversePath": true,
+					"path": "project"
+				},
+				{
+					"name": "parent",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Project",
+					"path": "Project"
+				},
+				{
+					"name": "projectCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "ProjectCollection",
+					"reversePath": true,
+					"path": "parent"
+				},
+				{
+					"name": "analyticAccountCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "AnalyticAccountCollection",
+					"reversePath": true,
+					"path": "project"
+				}
+			]
+		}
+	],
+	"type": []
+}
