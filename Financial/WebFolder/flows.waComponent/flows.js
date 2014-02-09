@@ -13,6 +13,7 @@ function constructor (id) {
 	this.load = function (data) {// @lock
 
 	// @region namespaceDeclaration// @startlock
+	var combobox6 = {};	// @combobox
 	var combobox7 = {};	// @combobox
 	var combobox5 = {};	// @combobox
 	var textField9 = {};	// @textField
@@ -34,6 +35,11 @@ function constructor (id) {
 
 	// eventHandlers// @lock
 
+	combobox6.change = function combobox6_change (event)// @startlock
+	{// @endlock
+		$comp.sources.account1.query("project.ID = :1", $comp.widgets.combobox6.getValue());
+	};// @lock
+
 	combobox7.change = function combobox7_change (event)// @startlock
 	{// @endlock
 		$comp.sources.analyticAccount.query("project.ID = :1 AND typology = :2", $comp.widgets.combobox5.getValue(), $comp.widgets.combobox7.getValue());
@@ -41,20 +47,22 @@ function constructor (id) {
 		//alert("valor cambia");
 		
 		if ($comp.widgets.combobox7.getValue() == 'input') {
+			$comp.sources.account1.query("project.ID = :1", $comp.widgets.combobox5.getValue());
 			$comp.widgets.combobox9.hide();
 			$comp.widgets.combobox10.show();
 			$comp.widgets.combobox6.hide();
 			
 		} else if ($comp.widgets.combobox7.getValue() == 'output') {
+			$comp.sources.account1.query("project.ID = :1", $comp.widgets.combobox5.getValue());
 			$comp.widgets.combobox9.show();
 			$comp.widgets.combobox10.hide();
 			$comp.widgets.combobox6.hide();
 			
 		} else if ($comp.widgets.combobox7.getValue() == 'transfer') {
+			$comp.sources.account1.query("project.ID = :1", $comp.widgets.combobox6.getValue());
 			$comp.widgets.combobox9.show();
 			$comp.widgets.combobox10.show();
 			$comp.widgets.combobox6.show();
-			
 		}
 	};// @lock
 
@@ -158,7 +166,25 @@ function constructor (id) {
 		debugger;
 		var newFlow = $comp.sources.flow.getCurrentElement();
 		
-		newFlow.analyticAccount.ID = $comp.widgets.combobox11.getValue();
+		newFlow.analyticAccount.setValue($comp.sources.analyticAccount.getCurrentElement());
+		newFlow.typology.setValue($comp.widgets.combobox7.getValue());
+		
+		
+		if ($comp.widgets.combobox7.getValue() == 'input') {
+			newFlow.counterpart.setValue($comp.sources.counterpart.getCurrentElement());
+			newFlow.toAccount.setValue($comp.sources.account1.getCurrentElement());
+			
+		} else if ($comp.widgets.combobox7.getValue() == 'output') {
+			newFlow.counterpart.setValue($comp.sources.counterpart.getCurrentElement());
+			newFlow.fromAccount.setValue($comp.sources.account.getCurrentElement());
+			
+		} else if ($comp.widgets.combobox7.getValue() == 'transfer') {
+			newFlow.fromAccount.setValue($comp.sources.account.getCurrentElement());
+			newFlow.toAccount.setValue($comp.sources.account1.getCurrentElement());
+			
+		}
+		
+		
 		
 		$comp.sources.flow.save({onSuccess:function(event){
 			$comp.sources.flow.addEntity(newFlow);
@@ -199,6 +225,7 @@ function constructor (id) {
 	};// @lock
 
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_combobox6", "change", combobox6.change, "WAF");
 	WAF.addListener(this.id + "_combobox7", "change", combobox7.change, "WAF");
 	WAF.addListener(this.id + "_combobox5", "change", combobox5.change, "WAF");
 	WAF.addListener(this.id + "_textField9", "change", textField9.change, "WAF");
@@ -224,7 +251,8 @@ function constructor (id) {
 	{
 		//debugger;
 		
-		var flowQuery = "project.ID = " + $comp.widgets.combobox1.getValue();
+		var flowQuery = "fromAccount.project.ID = " + $comp.widgets.combobox1.getValue();
+		flowQuery += " OR toAccount.project.ID = " + $comp.widgets.combobox1.getValue();
 		
 		if ($comp.widgets.combobox4.getValue() != "all") {
 			
