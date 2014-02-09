@@ -13,6 +13,10 @@ function constructor (id) {
 	this.load = function (data) {// @lock
 
 	// @region namespaceDeclaration// @startlock
+	var combobox7 = {};	// @combobox
+	var combobox5 = {};	// @combobox
+	var textField9 = {};	// @textField
+	var textField8 = {};	// @textField
 	var combobox12 = {};	// @combobox
 	var combobox4 = {};	// @combobox
 	var checkbox8 = {};	// @checkbox
@@ -29,6 +33,46 @@ function constructor (id) {
 	// @endregion// @endlock
 
 	// eventHandlers// @lock
+
+	combobox7.change = function combobox7_change (event)// @startlock
+	{// @endlock
+		$comp.sources.analyticAccount.query("project.ID = :1 AND typology = :2", $comp.widgets.combobox5.getValue(), $comp.widgets.combobox7.getValue());
+		
+		//alert("valor cambia");
+		
+		if ($comp.widgets.combobox7.getValue() == 'input') {
+			$comp.widgets.combobox9.hide();
+			$comp.widgets.combobox10.show();
+			$comp.widgets.combobox6.hide();
+			
+		} else if ($comp.widgets.combobox7.getValue() == 'output') {
+			$comp.widgets.combobox9.show();
+			$comp.widgets.combobox10.hide();
+			$comp.widgets.combobox6.hide();
+			
+		} else if ($comp.widgets.combobox7.getValue() == 'transfer') {
+			$comp.widgets.combobox9.show();
+			$comp.widgets.combobox10.show();
+			$comp.widgets.combobox6.show();
+			
+		}
+	};// @lock
+
+	combobox5.change = function combobox5_change (event)// @startlock
+	{// @endlock
+		$comp.sources.analyticAccount.query("project.ID = :1 AND typology = :2", $comp.widgets.combobox5.getValue(), $comp.widgets.combobox7.getValue());
+		$comp.sources.account.query("project.ID = :1", $comp.widgets.combobox5.getValue());
+	};// @lock
+
+	textField9.change = function textField9_change (event)// @startlock
+	{// @endlock
+		applyFilter();
+	};// @lock
+
+	textField8.change = function textField8_change (event)// @startlock
+	{// @endlock
+		applyFilter();
+	};// @lock
 
 	combobox12.change = function combobox12_change (event)// @startlock
 	{// @endlock
@@ -111,9 +155,13 @@ function constructor (id) {
 
 	button8.click = function button8_click (event)// @startlock
 	{// @endlock
+		debugger;
+		var newFlow = $comp.sources.flow.getCurrentElement();
+		
+		newFlow.analyticAccount.ID = $comp.widgets.combobox11.getValue();
+		
 		$comp.sources.flow.save({onSuccess:function(event){
-			$comp.sources.flow.addEntity($comp.sources.flow.getCurrentElement());
-		    //$comp.sources.flow.orderBy('creationDate desc');
+			$comp.sources.flow.addEntity(newFlow);
 		}});
 		$comp.widgets.newFlowContainer.hide();
 		$comp.widgets.filterContainer.show();
@@ -142,6 +190,7 @@ function constructor (id) {
 		$comp.widgets.flowsGrid.hide();
 		$comp.widgets.displayFlowContainer.hide();
 		$comp.widgets.newFlowContainer.show();
+		$comp.widgets.combobox7.setValue("output");
 	};// @lock
 
 	button2.click = function button2_click (event)// @startlock
@@ -150,6 +199,10 @@ function constructor (id) {
 	};// @lock
 
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_combobox7", "change", combobox7.change, "WAF");
+	WAF.addListener(this.id + "_combobox5", "change", combobox5.change, "WAF");
+	WAF.addListener(this.id + "_textField9", "change", textField9.change, "WAF");
+	WAF.addListener(this.id + "_textField8", "change", textField8.change, "WAF");
 	WAF.addListener(this.id + "_combobox12", "change", combobox12.change, "WAF");
 	WAF.addListener(this.id + "_combobox4", "change", combobox4.change, "WAF");
 	WAF.addListener(this.id + "_checkbox8", "change", checkbox8.change, "WAF");
@@ -186,16 +239,20 @@ function constructor (id) {
 			flowQuery += " AND typology = '" + $comp.widgets.combobox12.getValue() + "'";
 		}
 		
+		if ($comp.widgets.checkbox8.getValue()) {
+			var fecha = waf.widgets.component0_textField8.getValue();
+			var res = fecha.split("/");
+			flowQuery += " AND valueDate >= '" + res[2] + "-" + res[0] + "-" + res[1] + "'";
+		}
 		
-		alert(flowQuery);
+		if ($comp.widgets.checkbox9.getValue()) {
+			var fecha = waf.widgets.component0_textField9.getValue();
+			var res = fecha.split("/");
+			flowQuery += " AND valueDate <= '" + res[2] + "-" + res[0] + "-" + res[1] + "'";
+		}
+
+		//$comp.sources.flow.query(flowQuery);
 		
-		
-		/*
-		$comp.sources.flow.query(
-			"project.ID = :1 AND valueDate < :2 AND valueDate > :3 AND typology = :4", 
-			$comp.widgets.combobox1.getValue(),
-		);
-		*/
 	};
 
 

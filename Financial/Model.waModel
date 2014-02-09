@@ -72,8 +72,8 @@
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
-			"workspaceTop": 210
+			"workspaceLeft": 320,
+			"workspaceTop": 10
 		}
 	},
 	"dataClasses": [
@@ -138,6 +138,13 @@
 					"kind": "storage",
 					"scope": "public",
 					"type": "long"
+				},
+				{
+					"name": "projectName",
+					"scope": "public",
+					"path": "project.name",
+					"type": "string",
+					"kind": "alias"
 				}
 			]
 		},
@@ -202,9 +209,9 @@
 				},
 				{
 					"name": "typology",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				}
 			]
 		},
@@ -459,19 +466,18 @@
 				},
 				{
 					"name": "name",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "parentName",
+					"kind": "alias",
 					"scope": "public",
-					"path": "parent.name",
 					"type": "string",
-					"kind": "alias"
+					"path": "parent.name"
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }
