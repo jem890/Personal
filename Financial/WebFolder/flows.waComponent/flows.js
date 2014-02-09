@@ -13,6 +13,8 @@ function constructor (id) {
 	this.load = function (data) {// @lock
 
 	// @region namespaceDeclaration// @startlock
+	var combobox3 = {};	// @combobox
+	var combobox2 = {};	// @combobox
 	var combobox6 = {};	// @combobox
 	var combobox7 = {};	// @combobox
 	var combobox5 = {};	// @combobox
@@ -34,6 +36,16 @@ function constructor (id) {
 	// @endregion// @endlock
 
 	// eventHandlers// @lock
+
+	combobox3.change = function combobox3_change (event)// @startlock
+	{// @endlock
+		applyFilter();
+	};// @lock
+
+	combobox2.change = function combobox2_change (event)// @startlock
+	{// @endlock
+		applyFilter();
+	};// @lock
 
 	combobox6.change = function combobox6_change (event)// @startlock
 	{// @endlock
@@ -69,6 +81,10 @@ function constructor (id) {
 	combobox5.change = function combobox5_change (event)// @startlock
 	{// @endlock
 		$comp.sources.analyticAccount.query("project.ID = :1 AND typology = :2", $comp.widgets.combobox5.getValue(), $comp.widgets.combobox7.getValue());
+		if ($comp.widgets.combobox7.getValue() != 'transfer'){
+			$comp.sources.account1.query("project.ID = :1", $comp.widgets.combobox5.getValue());	
+		}
+		
 		$comp.sources.account.query("project.ID = :1", $comp.widgets.combobox5.getValue());
 	};// @lock
 
@@ -163,7 +179,7 @@ function constructor (id) {
 
 	button8.click = function button8_click (event)// @startlock
 	{// @endlock
-		debugger;
+		//debugger;
 		var newFlow = $comp.sources.flow.getCurrentElement();
 		
 		newFlow.analyticAccount.setValue($comp.sources.analyticAccount.getCurrentElement());
@@ -184,9 +200,9 @@ function constructor (id) {
 			
 		}
 		
+		newFlow.insertionDate.setValue(new Date());
 		
-		
-		$comp.sources.flow.save({onSuccess:function(event){
+		newFlow.save({onSuccess:function(event){
 			$comp.sources.flow.addEntity(newFlow);
 		}});
 		$comp.widgets.newFlowContainer.hide();
@@ -225,6 +241,8 @@ function constructor (id) {
 	};// @lock
 
 	// @region eventManager// @startlock
+	WAF.addListener(this.id + "_combobox3", "change", combobox3.change, "WAF");
+	WAF.addListener(this.id + "_combobox2", "change", combobox2.change, "WAF");
 	WAF.addListener(this.id + "_combobox6", "change", combobox6.change, "WAF");
 	WAF.addListener(this.id + "_combobox7", "change", combobox7.change, "WAF");
 	WAF.addListener(this.id + "_combobox5", "change", combobox5.change, "WAF");
@@ -257,7 +275,7 @@ function constructor (id) {
 		if ($comp.widgets.combobox4.getValue() != "all") {
 			
 			if ($comp.widgets.combobox4.getValue() == "pending") {
-				flowQuery += " AND approved = false OR approved = null";
+				flowQuery += " AND (approved = false OR approved = null)";
 			} else if ($comp.widgets.combobox4.getValue() == "approved") {
 				flowQuery += " AND approved = true";
 			}
@@ -268,18 +286,29 @@ function constructor (id) {
 		}
 		
 		if ($comp.widgets.checkbox8.getValue()) {
-			var fecha = waf.widgets.component0_textField8.getValue();
+			var fecha = $comp.widgets.textField8.getValue();
 			var res = fecha.split("/");
 			flowQuery += " AND valueDate >= '" + res[2] + "-" + res[0] + "-" + res[1] + "'";
 		}
 		
+		if ($comp.widgets.checkbox6.getValue()) {
+			flowQuery += " AND analyticAccount.ID = " + $comp.widgets.combobox2.getValue();
+		}
+		
+		if ($comp.widgets.checkbox5.getValue()) {
+			flowQuery += " AND (fromAccount.ID = " + $comp.widgets.combobox3.getValue() + " OR toAccount.ID = " + $comp.widgets.combobox3.getValue() + ")";
+		}
+		
+		
 		if ($comp.widgets.checkbox9.getValue()) {
-			var fecha = waf.widgets.component0_textField9.getValue();
+			var fecha = $comp.widgets.textField9.getValue();
 			var res = fecha.split("/");
 			flowQuery += " AND valueDate <= '" + res[2] + "-" + res[0] + "-" + res[1] + "'";
 		}
-
-		//$comp.sources.flow.query(flowQuery);
+		
+		//alert(flowQuery);
+		
+		$comp.sources.flow.query(flowQuery);
 		
 	};
 
